@@ -1,22 +1,24 @@
 import java.io.File;
 
 public class FilesList {
-    public String directories[] = new String[15];
+    private static String directories[] = new String[15];
+    private static String tempDir = System.getProperty("java.io.tmpdir");
+    private static String userHome = System.getProperty("user.home");
 
-    public void fillDir(){
-        directories[0] = System.getProperty("java.io.tmpdir");
+    public static void fillDir(){
+        directories[0] = tempDir;
         directories[1] = getFireFoxCache();
         directories[2] = getOperaCache();
         directories[3] = getMicrosoftCache();
         directories[4] = getChromeCache();
     }
 
-    public String[] getDirectories() {
+    public static String[] getDirectories() {
         return directories;
     }
 
-    public String getFireFoxCache(){
-        String path = System.getProperty("user.home") + "\\AppData\\local\\Mozilla\\Firefox\\Profiles\\";
+    public static String getFireFoxCache(){
+        String path = userHome + "\\AppData\\local\\Mozilla\\Firefox\\Profiles\\";
         File file = new File(path);
         if (file.exists()){
         String list[] = file.list();
@@ -26,8 +28,8 @@ public class FilesList {
         else return null;
     }
 
-    public String getOperaCache(){
-        String path = System.getProperty("user.home") + "\\AppData\\local\\Opera\\";
+    public static String getOperaCache(){
+        String path = userHome + "\\AppData\\local\\Opera\\";
         File file = new File(path);
         if (file.exists()){
             String list[] = file.list();
@@ -37,8 +39,8 @@ public class FilesList {
         else return null;
     }
 
-    public String getMicrosoftCache(){
-        String path = System.getProperty("user.home") + "\\AppData\\Local\\Microsoft\\Windows\\WebCache\\";
+    public static String getMicrosoftCache(){
+        String path = userHome + "\\AppData\\Local\\Microsoft\\Windows\\WebCache\\";
         File file = new File(path);
         if (file.exists()){
             return path;
@@ -46,8 +48,8 @@ public class FilesList {
         else return null;
     }
 
-    public String getChromeCache(){
-        String path = System.getProperty("user.home") + "\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Cache\\";
+    public static String getChromeCache(){
+        String path = userHome + "\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Cache\\";
         File file = new File(path);
         if (file.exists()){
             return path;

@@ -10,7 +10,10 @@ public class Files {
                 delete(f);
             }
             dir.delete();
-        } else dir.delete();
+        } else {
+            System.out.println("File or directory " + dir + " is deleted");
+            dir.delete();
+        }
 
     }
 }
