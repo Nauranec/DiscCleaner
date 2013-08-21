@@ -7,7 +7,11 @@ public class FilesList {
     private static String tempDir = System.getProperty("java.io.tmpdir");
     private static String userHome = System.getProperty("user.home");
 
-    public static void fillDir(){
+    public static void fillLinuxDir(){
+        directories[0] = "/home/" + System.getProperty("user.name") + "/.local/share/Trash/files";
+    }
+
+    public static void fillWinDir(){
         directories[0] = tempDir;
         directories[1] = getFireFoxCache();
         directories[2] = getOperaCache();
